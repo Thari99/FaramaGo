@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "830476658586",
+    "firebase_url": "https://farma-go-a18d6-default-rtdb.firebaseio.com",
+    "project_id": "farma-go-a18d6",
+    "storage_bucket": "farma-go-a18d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830476658586:android:7111a325ce8db07000fc23",
+        "android_client_info": {
+          "package_name": "com.example.farmago"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830476658586-smue71go2ln96uqrvv7seckrk6tij10f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.farmago",
+            "certificate_hash": "33230a401dd240aeb6163295d48a8a714f7bc491"
+          }
+        },
+        {
+          "client_id": "830476658586-71gsc7a2hefepkki0f28lgnvuith2h62.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAT6EhSfWtFvOJeN-XeLi6BIQOpFI8X_B8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830476658586-71gsc7a2hefepkki0f28lgnvuith2h62.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
