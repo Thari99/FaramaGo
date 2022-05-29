@@ -1,15 +1,16 @@
 import 'package:farmago/screens/Home/test.dart';
 import 'package:farmago/screens/Home/test2.dart';
-import 'package:farmago/screens/Navigation/drawer_items.dart';
-import 'package:farmago/screens/Navigation/navigation_provider.dart';
+import 'package:farmago/screens/farmer/Home/Post_upload-screen/upload-screen.dart';
+import 'package:farmago/screens/farmer/Navigation/drawer_items.dart';
+import 'package:farmago/screens/farmer/Navigation/navigation_provider.dart';
 import 'package:farmago/screens/welcome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:farmago/screens/Navigation/model/drawer_iteam.dart';
+import 'package:farmago/screens/farmer/Navigation/model/drawer_iteam.dart';
 
-class NavigationDrawerWidget extends StatelessWidget {
-  const NavigationDrawerWidget({Key? key}) : super(key: key);
+class NavigationDrawerWidgetF extends StatelessWidget {
+  const NavigationDrawerWidgetF({Key? key}) : super(key: key);
   final padding = const EdgeInsets.symmetric(horizontal: 20);
 
   @override
@@ -17,19 +18,19 @@ class NavigationDrawerWidget extends StatelessWidget {
     final safeArea =
         EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top);
 
-    final provider = Provider.of<NavigationProvider>(context);
+    final provider = Provider.of<NavigationProviderF>(context);
     final isCollapsed = provider.isCollapsed;
 
     return Container(
       width: isCollapsed ? MediaQuery.of(context).size.width * 0.2 : null,
       child: Drawer(
           child: Container(
-        color: Color(0xff48a12f),
+        color: Color.fromRGBO(0, 139, 139, 1),
         child: Column(
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
-              padding: EdgeInsets.symmetric(vertical: 24).add(safeArea),
+              padding: const EdgeInsets.symmetric(vertical: 24).add(safeArea),
               width: double.infinity,
               color: Colors.white12,
               child: buildHeader(isCollapsed),
@@ -37,14 +38,14 @@ class NavigationDrawerWidget extends StatelessWidget {
             const SizedBox(height: 24),
             buildList(items: itemsFirst, isCollapsed: isCollapsed),
             const SizedBox(height: 24),
-            Divider(color: Colors.white70),
+            const Divider(color: Colors.white70),
             const SizedBox(height: 24),
             buildList(
               indexOffset: itemsFirst.length,
               items: itemsSecond,
               isCollapsed: isCollapsed,
             ),
-            Spacer(),
+            const Spacer(),
             buildCollapseIcon(context, isCollapsed),
             const SizedBox(height: 12),
           ],
@@ -54,62 +55,59 @@ class NavigationDrawerWidget extends StatelessWidget {
   }
 
   Widget buildList({
-  required bool isCollapsed,
+    required bool isCollapsed,
     required List<DrawerItem> items,
     int indexOffset = 0,
-}) =>
-  ListView.separated(
-    padding: isCollapsed ? EdgeInsets.zero : padding,
-    shrinkWrap: true,
-    primary: false,
-    itemCount: items.length,
-    separatorBuilder: (context, index) => SizedBox(height: 16),
-  itemBuilder: (context, index) {
-  final item = items[index];
+  }) =>
+      ListView.separated(
+        padding: isCollapsed ? EdgeInsets.zero : padding,
+        shrinkWrap: true,
+        primary: false,
+        itemCount: items.length,
+        separatorBuilder: (context, index) => SizedBox(height: 16),
+        itemBuilder: (context, index) {
+          final item = items[index];
 
-  return buildMenuItem(
-    isCollapsed: isCollapsed,
-    text: item.title,
-    icon: item.icon,
-    onClicked: () => selectItem(context, indexOffset + index),
-  );
-  },
-
-  );
-
-
+          return buildMenuItem(
+            isCollapsed: isCollapsed,
+            text: item.title,
+            icon: item.icon,
+            onClicked: () => selectItem(context, indexOffset + index),
+          );
+        },
+      );
 
   void selectItem(BuildContext context, int index) {
     final navigateTo = (page) => Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => page,
-    ));
+          builder: (context) => page,
+        ));
 
     Navigator.of(context).pop();
 
     switch (index) {
-      // case 0:
-      //   navigateTo();
-      //   break;
+      case 0:
+        navigateTo(MainPage());
+        break;
       case 1:
-        navigateTo(HomePage());
+        navigateTo(UploadProductForm());
         break;
       // case 2:
-      //   navigateTo(());
+      //   navigateTo((UploadProductForm));
       //   break;
       // case 3:
-      //   navigateTo(());
+      //   navigateTo((UploadProductForm));
       //   break;
       // case 4:
-      //   navigateTo(());
+      //   navigateTo((UploadProductForm));
       //   break;
-      // case 5:
+      case 5:
+        navigateTo((const Welcomepage()));
+        break;
+      // case 6:
       //   navigateTo(());
       //   break;
     }
   }
-
-
-
 
   Widget buildMenuItem({
     required bool isCollapsed,
@@ -117,30 +115,23 @@ class NavigationDrawerWidget extends StatelessWidget {
     required IconData icon,
     VoidCallback? onClicked,
   }) {
-    final color = Colors.white;
+    final color = Colors.black54;
     final leading = Icon(icon, color: color);
 
     return Material(
       color: Colors.transparent,
       child: isCollapsed
           ? ListTile(
-        title: leading,
-        onTap: onClicked,
-      )
+              title: leading,
+              onTap: onClicked,
+            )
           : ListTile(
-        leading: leading,
-        title: Text(text, style: TextStyle(color: color, fontSize: 16)),
-        onTap: onClicked,
-      ),
+              leading: leading,
+              title: Text(text, style: TextStyle(color: Colors.black54, fontSize: 16)),
+              onTap: onClicked,
+            ),
     );
   }
-
-
-
-
-
-
-
 
   Widget buildCollapseIcon(BuildContext context, bool isCollapsed) {
     final double size = 78;
@@ -149,30 +140,30 @@ class NavigationDrawerWidget extends StatelessWidget {
     final margin = isCollapsed ? null : EdgeInsets.only(right: 16);
     final width = isCollapsed ? double.infinity : size;
 
-    return Container(
-        alignment: alignment,
-        margin: margin,
-        child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              child: Container(
-                width: size,
-                height: size,
-                child: Icon(icon, color: Colors.white),
-              ),
-              onTap: () {
-                final provider =
-                    Provider.of<NavigationProvider>(context, listen: false);
+    return Column(
+      children: [
+        Container(
+            alignment: alignment,
+            margin: margin,
+            child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  child: Container(
+                    width: size,
+                    height: size,
+                    child: Icon(icon, color: Colors.white),
+                  ),
+                  onTap: () {
+                    final provider =
+                        Provider.of<NavigationProviderF>(context, listen: false);
 
-                provider.toggleIsCollapsed();
-              },
-            )));
+                    provider.toggleIsCollapsed();
+                  },
+                ))),
+      ],
+    );
+
   }
-
-
-
-
-
 
   Widget buildHeader(bool isCollapsed) => isCollapsed
       ? FlutterLogo(size: 48)
@@ -182,7 +173,7 @@ class NavigationDrawerWidget extends StatelessWidget {
             FlutterLogo(size: 48),
             SizedBox(width: 16),
             Text(
-              'Flutter',
+              'FaramaGo',
               style: TextStyle(fontSize: 32, color: Colors.white),
             ),
           ],

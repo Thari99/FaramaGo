@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:farmago/screens/Authentication/login-screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:farmago/screens/welcome.dart';
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     Timer(const Duration(seconds: 3), (){
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=> const Welcomepage()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=> const LoginB()));
     });
   }
   @override

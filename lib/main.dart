@@ -1,15 +1,17 @@
-import 'package:farmago/screens/Home/test.dart';
 import 'package:farmago/screens/Home/test2.dart';
-import 'package:farmago/screens/Home/test3.dart';
-import 'package:farmago/screens/Navigation/navigation_provider.dart';
-import 'package:farmago/screens/bayer/login-screen.dart';
-import 'package:farmago/screens/bayer/signup-screen.dart';
-import 'package:farmago/screens/farmer/login-screen.dart';
-import 'package:farmago/screens/farmer/signup-screen.dart';
-import 'package:farmago/screens/welcome.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:farmago/screens/Authentication/login-screen.dart';
+import 'package:farmago/screens/Authentication/signup-screen.dart';
+import 'package:farmago/screens/Home/test4.dart';
+import 'package:farmago/screens/bayer/Home/view_Product/view_item.dart';
+import 'package:farmago/screens/farmer/Home/Post_upload-screen/test.dart';
+import 'package:farmago/screens/farmer/Home/Post_upload-screen/upload-screen.dart';
+import 'package:farmago/screens/farmer/Home/home.dart';
+import 'package:farmago/screens/farmer/Navigation/navigation_drawer_widget.dart';
+import 'package:farmago/screens/farmer/Navigation/navigation_provider.dart';
+import 'package:farmago/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 
 // void main() {
 //   runApp( MyApp());
@@ -18,6 +20,11 @@ import 'package:firebase_core/firebase_core.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
   runApp(const MyApp());
 }
@@ -28,9 +35,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginB(),
+      home: SplashScreen(),
     );
   }
 }

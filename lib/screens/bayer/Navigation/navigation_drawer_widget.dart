@@ -1,12 +1,12 @@
 import 'package:farmago/screens/Home/test.dart';
 import 'package:farmago/screens/Home/test2.dart';
-import 'package:farmago/screens/Navigation/drawer_items.dart';
-import 'package:farmago/screens/Navigation/navigation_provider.dart';
+import 'package:farmago/screens/bayer/Navigation/drawer_items.dart';
+import 'package:farmago/screens/bayer/Navigation/navigation_provider.dart';
 import 'package:farmago/screens/welcome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:farmago/screens/Navigation/model/drawer_iteam.dart';
+import 'package:farmago/screens/bayer/Navigation/model/drawer_iteam.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   const NavigationDrawerWidget({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class NavigationDrawerWidget extends StatelessWidget {
     final safeArea =
         EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top);
 
-    final provider = Provider.of<NavigationProvider>(context);
+    final provider = Provider.of<NavigationProviderB>(context);
     final isCollapsed = provider.isCollapsed;
 
     return Container(
@@ -90,9 +90,9 @@ class NavigationDrawerWidget extends StatelessWidget {
       // case 0:
       //   navigateTo();
       //   break;
-      case 1:
-        navigateTo(HomePage());
-        break;
+      // case 1:
+      //   navigateTo(HomePage());
+      //   break;
       // case 2:
       //   navigateTo(());
       //   break;
@@ -162,7 +162,7 @@ class NavigationDrawerWidget extends StatelessWidget {
               ),
               onTap: () {
                 final provider =
-                    Provider.of<NavigationProvider>(context, listen: false);
+                    Provider.of<NavigationProviderB>(context, listen: false);
 
                 provider.toggleIsCollapsed();
               },

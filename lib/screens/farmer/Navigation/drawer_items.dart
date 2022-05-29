@@ -1,14 +1,15 @@
-import 'package:farmago/screens/Navigation/model/drawer_iteam.dart';
+import 'package:farmago/screens/farmer/Navigation/model/drawer_iteam.dart';
 import 'package:flutter/material.dart';
 
 final itemsFirst = [
-  DrawerItem(title: 'Profile', icon: Icons.people),
-  DrawerItem(title: 'Samples & Tutorials', icon: Icons.phone_android),
-  DrawerItem(title: 'Map', icon: Icons.map),
-  DrawerItem(title: 'Performance & Optimization', icon: Icons.build),
+  const DrawerItem(title: 'Profile', icon: Icons.people),
+  const DrawerItem(title: 'Sell Products', icon: Icons.upload),
+  const DrawerItem(title: 'Map', icon: Icons.map),
+  const DrawerItem(title: 'Performance & Optimization', icon: Icons.build),
 ];
 
 final itemsSecond = [
-  DrawerItem(title: 'Deployment', icon: Icons.cloud_upload),
-  DrawerItem(title: 'Resources', icon: Icons.exit_to_app),
+  const DrawerItem(title: 'Deployment', icon: Icons.cloud_upload),
+  const DrawerItem(title: 'Back To Page', icon: Icons.backspace),
+  const DrawerItem(title: 'Exit', icon: Icons.exit_to_app),
 ];

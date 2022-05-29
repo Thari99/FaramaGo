@@ -1,3 +1,10 @@
+import 'package:farmago/screens/Authentication/login-screen.dart';
+import 'package:farmago/screens/Home/test.dart';
+import 'package:farmago/screens/Home/test2.dart';
+import 'package:farmago/screens/bayer/Home/home.dart';
+import 'package:farmago/screens/bayer/Navigation/navigation_drawer_widget.dart';
+import 'package:farmago/screens/farmer/Home/home.dart';
+import 'package:farmago/screens/farmer/Navigation/navigation_drawer_widget.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -51,7 +58,9 @@ class Welcomepage extends StatelessWidget {
                   MaterialButton(
                     minWidth: double.infinity,
                     height: 60,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=> HomePageF()));
+                    },
                     shape: RoundedRectangleBorder(
                         side: const BorderSide(color: Colors.black),
                         borderRadius: BorderRadius.circular(50)),
@@ -67,7 +76,9 @@ class Welcomepage extends StatelessWidget {
                   MaterialButton(
                     minWidth: double.infinity,
                     height: 60,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=> HomePageB()));
+                    },
                     shape: RoundedRectangleBorder(
                         side: const BorderSide(color: Colors.black),
                         borderRadius: BorderRadius.circular(50)),
