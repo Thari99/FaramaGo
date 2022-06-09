@@ -1,6 +1,6 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:farmago/screens/Authentication/signup-screen.dart';
-import 'package:farmago/screens/Home/test.dart';
+
 import 'package:farmago/screens/welcome.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';

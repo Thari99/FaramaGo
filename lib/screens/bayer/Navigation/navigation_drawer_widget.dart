@@ -1,5 +1,4 @@
-import 'package:farmago/screens/Home/test.dart';
-import 'package:farmago/screens/Home/test2.dart';
+
 import 'package:farmago/screens/bayer/Navigation/drawer_items.dart';
 import 'package:farmago/screens/bayer/Navigation/navigation_provider.dart';
 import 'package:farmago/screens/welcome.dart';

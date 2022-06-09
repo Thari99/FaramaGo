@@ -1,6 +1,5 @@
 import 'package:farmago/screens/Authentication/login-screen.dart';
-import 'package:farmago/screens/Home/test.dart';
-import 'package:farmago/screens/Home/test2.dart';
+
 import 'package:farmago/screens/bayer/Home/home.dart';
 import 'package:farmago/screens/bayer/Navigation/navigation_drawer_widget.dart';
 import 'package:farmago/screens/farmer/Home/home.dart';

@@ -1,5 +1,4 @@
-import 'package:farmago/screens/Home/test.dart';
-import 'package:farmago/screens/Home/test2.dart';
+
 import 'package:farmago/screens/farmer/Home/Post_upload-screen/upload-screen.dart';
 import 'package:farmago/screens/farmer/Navigation/drawer_items.dart';
 import 'package:farmago/screens/farmer/Navigation/navigation_provider.dart';
@@ -85,9 +84,9 @@ class NavigationDrawerWidgetF extends StatelessWidget {
     Navigator.of(context).pop();
 
     switch (index) {
-      case 0:
-        navigateTo(MainPage());
-        break;
+      // case 0:
+      //   navigateTo(MainPage());
+      //   break;
       case 1:
         navigateTo(UploadProductForm());
         break;
