@@ -8,14 +8,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:830476658586:android:7111a325ce8db07000fc23",
+        "mobilesdk_app_id": "1:830476658586:android:ddde3302bcf2d53b00fc23",
         "android_client_info": {
           "package_name": "com.example.farmago"
         }
       },
       "oauth_client": [
         {
-          "client_id": "830476658586-smue71go2ln96uqrvv7seckrk6tij10f.apps.googleusercontent.com",
+          "client_id": "830476658586-h7d9pubq1qsgf0srt9sa20npifhjmrpb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.farmago",

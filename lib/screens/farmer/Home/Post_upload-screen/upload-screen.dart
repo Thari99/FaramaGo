@@ -23,7 +23,7 @@ class _UploadProductFormState extends State<UploadProductForm> {
   final _formKey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  var _productName = '';
+  var _productTitle = '';
   var _productCategory = '';
   var _productDescription = '';
   var _productQuantity = '';
@@ -64,7 +64,7 @@ class _UploadProductFormState extends State<UploadProductForm> {
 
     if (isValid == null) {
       _formKey.currentState!.save();
-      print(_productName);
+      print(_productTitle);
       print(_productCategory);
       print(_productDescription);
       print(_productQuantity);
@@ -89,7 +89,7 @@ class _UploadProductFormState extends State<UploadProductForm> {
           final ref = FirebaseStorage.instance
               .ref()
               .child('productImages')
-              .child(_productName + '.jpg');
+              .child(_productTitle + '.jpg');
           await ref.putFile(_pickedImage!);
           url = await ref.getDownloadURL();
 
@@ -102,7 +102,8 @@ class _UploadProductFormState extends State<UploadProductForm> {
               .doc(productId)
               .set({
             'productId': productId,
-            'productTitle': _productName,
+            'productTitle': _productTitle,
+            'productQuantity': _productQuantity,
             'image': url,
             'productCategory': _productCategory,
             'productDescription': _productDescription,
@@ -180,55 +181,6 @@ class _UploadProductFormState extends State<UploadProductForm> {
           ),
         ),
       ),
-      bottomSheet: Container(
-        height: kBottomNavigationBarHeight * 0.8,
-        width: double.infinity,
-        decoration:  const BoxDecoration(
-          color: Colors.white,
-          border: Border(
-            top: BorderSide(
-              color: Colors.grey,
-              width: 0.5,
-            ),
-          ),
-        ),
-        child: Material(
-          color: Theme.of(context).backgroundColor,
-          child: isloading
-              ? const CircularProgressIndicator()
-              : InkWell(
-            onTap: _trySubmit,
-            splashColor: Colors.grey,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                const Padding(
-                  padding: EdgeInsets.only(right: 2),
-                  child: Text('Upload',
-                      style: TextStyle(fontSize: 16),
-                      textAlign: TextAlign.center),
-                ),
-                GradientIcon(
-                  CupertinoIcons.upload_circle,
-                  20,
-                  const LinearGradient(
-                    colors: <Color>[
-                      Colors.green,
-                      Colors.yellow,
-                      Colors.deepOrange,
-                      Colors.orange,
-                      Colors.yellow
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -261,7 +213,7 @@ class _UploadProductFormState extends State<UploadProductForm> {
                               labelText: 'Product Name',
                             ),
                             onSaved: (value) {
-                              _productName = value.toString();
+                              _productTitle = value.toString();
                             } ),
                         ),
                         const SizedBox(height: 20),
@@ -479,49 +431,31 @@ class _UploadProductFormState extends State<UploadProductForm> {
                             ),
                           ],
                         ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        MaterialButton(
+                            minWidth: double.infinity,
+                            height: 60,
+                            onPressed: _trySubmit,
+                            shape: RoundedRectangleBorder(
+                                side: const BorderSide(color: Colors.black),
+                                borderRadius: BorderRadius.circular(50)),
+                            child: const Text(
+                              "Upload",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 20),
+                            ))
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-            SizedBox(
-              height: 50,
-            )
+
           ],
         ),
       ),
-    );
-  }
-}
-
-class GradientIcon extends StatelessWidget {
-  GradientIcon(
-    this.icon,
-    this.size,
-    this.gradient,
-  );
-
-  final IconData icon;
-  final double size;
-  final Gradient gradient;
-
-  @override
-  Widget build(BuildContext context) {
-    return ShaderMask(
-      child: SizedBox(
-        width: size * 1.2,
-        height: size * 1.2,
-        child: Icon(
-          icon,
-          size: size,
-          color: Colors.white,
-        ),
-      ),
-      shaderCallback: (Rect bounds) {
-        final Rect rect = Rect.fromLTRB(0, 0, size, size);
-        return gradient.createShader(rect);
-      },
     );
   }
 }

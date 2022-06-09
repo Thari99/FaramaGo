@@ -32,7 +32,7 @@ class NavigationDrawerWidgetF extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(vertical: 24).add(safeArea),
               width: double.infinity,
-              color: Colors.white12,
+              color: Color.fromRGBO(0, 85, 85, 1.0),
               child: buildHeader(isCollapsed),
             ),
             const SizedBox(height: 24),
@@ -166,16 +166,20 @@ class NavigationDrawerWidgetF extends StatelessWidget {
   }
 
   Widget buildHeader(bool isCollapsed) => isCollapsed
-      ? FlutterLogo(size: 48)
+      ? Image.asset('assets/logo.png')
       : Row(
-          children: const [
-            SizedBox(width: 28),
-            FlutterLogo(size: 48),
-            SizedBox(width: 16),
-            Text(
-              'FaramaGo',
-              style: TextStyle(fontSize: 32, color: Colors.white),
-            ),
-          ],
-        );
+    children: [
+      SizedBox(width: 20),
+      CircleAvatar(
+        backgroundImage: AssetImage('assets/logo.png'),
+        backgroundColor: Color.fromRGBO(2, 61, 15, 1.0),
+        radius: 30,
+      ),
+      SizedBox(width: 16),
+      Text(
+        'FaramaGo',
+        style: TextStyle(fontSize: 32, color: Colors.white),
+      ),
+    ],
+  );
 }

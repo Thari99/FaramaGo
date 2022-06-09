@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:farmago/screens/bayer/Navigation/model/drawer_iteam.dart';
 
-class NavigationDrawerWidget extends StatelessWidget {
-  const NavigationDrawerWidget({Key? key}) : super(key: key);
+class NavigationDrawerWidgetB extends StatelessWidget {
+  const NavigationDrawerWidgetB({Key? key}) : super(key: key);
   final padding = const EdgeInsets.symmetric(horizontal: 20);
 
   @override
@@ -24,7 +24,7 @@ class NavigationDrawerWidget extends StatelessWidget {
       width: isCollapsed ? MediaQuery.of(context).size.width * 0.2 : null,
       child: Drawer(
           child: Container(
-        color: Color(0xff48a12f),
+            color: Color(0xff1548a3),
         child: Column(
           children: [
             SizedBox(height: 20),
@@ -102,9 +102,9 @@ class NavigationDrawerWidget extends StatelessWidget {
       // case 4:
       //   navigateTo(());
       //   break;
-      // case 5:
-      //   navigateTo(());
-      //   break;
+      case 5:
+        navigateTo((const Welcomepage()));
+        break;
     }
   }
 
@@ -170,21 +170,21 @@ class NavigationDrawerWidget extends StatelessWidget {
   }
 
 
-
-
-
-
   Widget buildHeader(bool isCollapsed) => isCollapsed
-      ? FlutterLogo(size: 48)
+      ? Image.asset('assets/logo.png')
       : Row(
-          children: const [
-            SizedBox(width: 28),
-            FlutterLogo(size: 48),
-            SizedBox(width: 16),
-            Text(
-              'Flutter',
-              style: TextStyle(fontSize: 32, color: Colors.white),
-            ),
-          ],
-        );
+    children: [
+      SizedBox(width: 20),
+      CircleAvatar(
+        backgroundImage: AssetImage('assets/logo.png'),
+        backgroundColor: Color.fromRGBO(2, 61, 15, 1.0),
+        radius: 30,
+      ),
+      SizedBox(width: 16),
+      Text(
+        'FaramaGo',
+        style: TextStyle(fontSize: 32, color: Colors.white),
+      ),
+    ],
+  );
 }
